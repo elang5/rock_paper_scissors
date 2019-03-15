@@ -1,15 +1,22 @@
 <html>
     <script>
+        // create an array storing the three options we want to randomly select from. 
         const rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
+        // randonly select one of those elements from the array and return it to lower case.
         function computerPlay() {
             return rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)].toLowerCase();
         }
-        const computerSelection = computerPlay();
-
-        function playRound(playerSelection, computerSelection) {
-            playerSelection.toLowerCase();
+        
+        function game() {
+            // create a prompt where one will enter rock paper or scissors
+            let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase();
+            // set computer equal to the value created by the computerPlay function
+            let computerSelection = computerPlay();
+            // we need a counter for the player if the player gets a point
             let playerCounter = 0;
+            // counter for computer
             let computerCounter = 0;
+            // declaration of if statements outlining all possible outcomes; if I win, player counter gets a point; if not, computer gets a point
             if (playerSelection === 'rock' && computerSelection === 'paper') {
                 alert('You lose! Paper beats rock.');
                 computerCounter++;
@@ -34,14 +41,19 @@
                 alert('You win! Paper beats rock.')
                 playerCounter++;
             }
+            // we need a loop here that keeps running the game until a player gets 5 points; then we stop and declare a winner
+            while (playerCounter < 5 && computerCounter < 5) {
+                    game();
+                    if (playerCounter === 5) {
+                    alert('You are the winner!');
+                    break;
+                    }
+                    if (computerCounter === 5) {
+                    alert('You are the loser!');
+                    break;
+                    }
+                } 
         }
-
-        function game() {
-            let playerSelection = prompt('Enter rock, paper, or scissors');
-            playRound()
-            if(playerCounter < 5 || computerCounter < 5) {
-                    playRound();
-                }
-        }
+        
     </script>
 </html>
