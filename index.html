@@ -6,17 +6,12 @@
         function computerPlay() {
             return rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)].toLowerCase();
         }
-        
-        function game() {
-            // create a prompt where one will enter rock paper or scissors
-            let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase();
-            // set computer equal to the value created by the computerPlay function
-            let computerSelection = computerPlay();
-            // we need a counter for the player if the player gets a point
-            let playerCounter = 0;
-            // counter for computer
-            let computerCounter = 0;
-            // declaration of if statements outlining all possible outcomes; if I win, player counter gets a point; if not, computer gets a point
+        // we need a counter for the player if the player gets a point
+        let playerCounter = 0;
+        // counter for computer
+        let computerCounter = 0;
+
+        function playRound(playerSelection, computerSelection) {
             if (playerSelection === 'rock' && computerSelection === 'paper') {
                 alert('You lose! Paper beats rock.');
                 computerCounter++;
@@ -41,18 +36,30 @@
                 alert('You win! Paper beats rock.')
                 playerCounter++;
             }
+            else if (playerSelection === computerSelection) {
+                alert("It's a tie.");
+            }
+        }
+        
+        function game() {
+            for (let i = 1; i <= 5; i++) {
+                // create a prompt where one will enter rock paper or scissors
+                let playerSelection = prompt('Enter rock, paper, or scissors').toLowerCase();
+                // set computer equal to the value created by the computerPlay function
+                let computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(`Player: ${playerCounter}, Computer: ${computerCounter}`);
+            }
+            if(playerCounter > computerCounter) {
+                alert('You are the winner!')
+            }
+            else {
+                alert('You lost!')
+            }
+            
+            // declaration of if statements outlining all possible outcomes; if I win, player counter gets a point; if not, computer gets a point
+            
             // we need a loop here that keeps running the game until a player gets 5 points; then we stop and declare a winner
-            while (playerCounter < 5 && computerCounter < 5) {
-                    game();
-                    if (playerCounter === 5) {
-                    alert('You are the winner!');
-                    break;
-                    }
-                    if (computerCounter === 5) {
-                    alert('You are the loser!');
-                    break;
-                    }
-                } 
         }
         
     </script>
