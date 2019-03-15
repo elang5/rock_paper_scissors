@@ -1,32 +1,47 @@
 <html>
     <script>
         const rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
-        let computerSelection = function computerPlay() {
-            return rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)];
+        function computerPlay() {
+            return rockPaperScissors[Math.floor(Math.random()*rockPaperScissors.length)].toLowerCase();
         }
-        function makeLowerCase() {
-            playerSelection.toLowerCase();
-            computerSelection.toLowerCase();
-        }
+        const computerSelection = computerPlay();
+
         function playRound(playerSelection, computerSelection) {
+            playerSelection.toLowerCase();
+            let playerCounter = 0;
+            let computerCounter = 0;
             if (playerSelection === 'rock' && computerSelection === 'paper') {
                 alert('You lose! Paper beats rock.');
+                computerCounter++;
             }
             else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-                alert('You lose! Scissors beat paper.')
+                alert('You lose! Scissors beat paper.');
+                computerCounter++;
             }
             else if (playerSelection === 'scissors' && computerSelection === 'paper') {
                 alert('You win! Scissors beat paper.')
+                playerCounter++;
             }
             else if (playerSelection === 'rock' && computerSelection === 'scissors') {
                 alert('You win! Rock beats scissors.')
+                playerCounter++;
             }
             else if (playerSelection === 'scissors' && computerSelection === 'rock') {
                 alert('You lose! Rock beats scissors.')
+                computerCounter++;
             }
             else if (playerSelection === 'paper' && computerSelection === 'rock') {
                 alert('You win! Paper beats rock.')
+                playerCounter++;
             }
+        }
+
+        function game() {
+            let playerSelection = prompt('Enter rock, paper, or scissors');
+            playRound()
+            if(playerCounter < 5 || computerCounter < 5) {
+                    playRound();
+                }
         }
     </script>
 </html>
