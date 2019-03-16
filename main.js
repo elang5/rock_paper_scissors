@@ -45,15 +45,15 @@ function playRound(playerSelection, computerSelection) {
 // new function references dom elements based on events
 function showScore() {
     const currentResult = document.getElementById('currentResult');
-    const playerCounter = document.getElementById('playerCounter');
-    const computerCounter = document.getElementById('computerCounter');
+    const playerScore = document.getElementById('playerCounter');
+    const computerScore = document.getElementById('computerCounter');
     const finalResult = document.getElementById('finalResult');
 
     finalResult.textContent = "";
 
     currentResult.textContent = result;
-    playerCounter.textContent = `Player score: ${playerCounter}`;
-    computerCounter.textContent = `Computer score: ${computerCounter}`;
+    playerScore.textContent = `Player score: ${playerCounter}`;
+    computerScore.textContent = `Computer score: ${computerCounter}`;
 
     if (playerCounter === 5) {
         finalResult.textContent = `You win. ${playerCounter} beats ${computerCounter}`;
@@ -81,7 +81,7 @@ button.addEventListener('click', (e) => {
     if (result === "win") {
         playerCounter++;
     } else if (result === "lose") {
-        computerScore++;
+        computerCounter++;
     }
     showScore();
 });
