@@ -1,0 +1,18 @@
+* body {
+    border-sizing: border-box;
+}
+
+body {
+    background: lightgrey; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    height: 120px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
